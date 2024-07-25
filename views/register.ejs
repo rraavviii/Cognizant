@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #e66465, #9198e5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            width: 70%;
+            max-width: 1200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .image-section {
+            background: #4b4b8e;
+            padding: 30px;
+            color: white;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .image-section img {
+            width: 100%;
+            height: auto;
+        }
+        .form-section {
+            flex: 1;
+            padding: 40px;
+        }
+        .form-section h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .form-section input, .form-section select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-section input[type="radio"] {
+            width: auto;
+        }
+        .form-section label {
+            margin-right: 10px;
+        }
+        .form-section .gender {
+            margin-top: 10px;
+        }
+        .form-section .btn {
+            background: #1e90ff;
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .form-section .btn:hover {
+            background: #0073e6;
+        }
+        .form-section .sign-in {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .form-section .alert {
+            color: red;
+            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-section">
+            <img src="https://www.shutterstock.com/image-vector/business-man-work-office-worker-600nw-2051967179.jpg" alt="Illustration">
+        </div>
+        <div class="form-section">
+            <h2>Registration</h2>
+            <form action="/register" method="post" onsubmit="return validate()">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="tel" name="contact" placeholder="Phone number" required>
+                <input type="text" name="country" placeholder="Country" required>
+                <input type="text" name="city" placeholder="City" required>
+                <input type="number" name="age" placeholder="age" required>
+                <input type="password" name="password" placeholder="Password" id="password" required>
+                <input type="password" onkeyup="check(this)" placeholder="Confirm password" id="Confirm-password" required>
+                <span class="alert"></span>
+                <div class="gender">
+                    <label>Gender:</label>
+                    <input type="radio" name="gender" value="male"> Male
+                    <input type="radio" name="gender" value="female"> Female
+                    <input type="radio" name="gender" value="other"> Other
+                    <input type="radio" name="gender" value="prefer-not-to-say"> Prefer not to say
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+                <div class="sign-in">
+                    <p>Already have an account? <a href="login">Sign in</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+    <script>
+        var password=document.querySelector('#password')
+        var flag=1
+        function check(cpassword){
+            if(cpassword.value.length>0){
+            if(password.value != cpassword.value){
+                flag=0
+                document.querySelector('.alert').innerText="Password Does not mtch"
+                document.querySelector('.alert').style.Color='red'
+            }
+            else{
+                flag=1
+                document.querySelector('.alert').innerText=""
+            }
+        }else{
+            document.querySelector('.alert').innerText=""
+        }
+        }
+
+        function validate(){
+            if(flag===1){
+                return true
+            }
+            else{
+                return false
+            }
+        }
+
+
+    </script>
+</body>
+</html>

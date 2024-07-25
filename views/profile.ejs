@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .icon{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1><%= user.name %></h1>
+    <h2 class="text-2xl font-semibold mb-4">Ask Anything</h2>
+    <a href="question"><h3>Home page</h3></a>
+    <div class="flex w-full justify-end items-center mb-5 ">
+        <a class="bg-red-500 rounded-md px-4 py-2 inline-block shadow-md hover:bg-red-600 transition-all duration-300"
+            href="/logout">Logout</a>
+    </div>
+    <form action="/querry" method="post" class="fade-in">
+        <textarea
+            class="w-full md:w-1/2 p-3 outline-none resize-none bg-transparent border-2 border-zinc-800 rounded-md focus:border-purple-500 transition duration-300"
+            placeholder="Write Your post" name="content" id="" cols="30" rows="1" required></textarea>
+           
+        <input type="submit" value="Create New Post"
+            class="px-4 py-2 bg-purple-500 hover:bg-purple-600 transition duration-300 block rounded-md mt-4 shadow-md w-full md:w-48">
+
+           
+    </form>
+    <!-- <img src="https://e7.pngegg.com/pngimages/82/700/png-clipart-computer-icons-encapsulated-postscript-speech-balloon-comment-balloon-text-logo-thumbnail.png" alt="" class="icon"> -->
+
+
+    
+</body>
+</html>

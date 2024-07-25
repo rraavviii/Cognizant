@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="w-full min-h-screen bg-zinc-900 text-white p-10">
+        <h2 class="bg-green-700 w-60 mb-5 rounded-md px-3 py-2 text-teal-500">Logged in as: <%= currentuser.name %></h2>
+        <div class="flex w-full justify-between">
+            <a href="/profile" class="bg-red-500 rounded-md px-3 py-2 inline-block mb-5">Write your post</a>
+            <a class="bg-red-500 rounded-md px-3 py-2 inline-block mb-5" href="/logout">Logout</a>
+        </div>
+        
+        <% querries.reverse().forEach(function(querry) { %>
+            <div class="bg-zinc-800 p-5 rounded-md mb-5">
+                <h1 class="font-bold mb-2 text-blue-500"><%= querry.user.name %></h1>
+                <p><%= new Date().toDateString() %></p>
+                <p class="text-lg"><%= querry.content %></p>
+                <div class="mb-2">
+                    <form action="/reply" method="post">
+                        <i class="fas fa-comment text-teal-500 cursor-pointer" onclick="toggleInput(this)"></i>
+                    <input type="text" name="content" placeholder="Write your answer..." class="mt-2 p-2 rounded-md bg-zinc-700 text-white border border-zinc-600 hidden w-full">
+                    <input type="submit" value="Post">
+                    </form>
+                    
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+    <script>
+        function toggleInput(icon) {
+            const input = icon.nextElementSibling;
+            input.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
